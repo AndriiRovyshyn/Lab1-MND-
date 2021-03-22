@@ -1,5 +1,6 @@
 import numpy as np
 from random import uniform
+import time
 
 MIN, MAX = 0, 20
 a0, a1, a2, a3 = 1, 2, 2, 3
@@ -10,6 +11,7 @@ X0 = np.empty(3)
 DX = np.empty(3)
 XNormal = np.empty((8, 3), dtype=float)
 
+start_time = time.time()
 for i in range(8):
     for j in range(3):
         X[i, j] = uniform(MIN, MAX)
@@ -35,8 +37,9 @@ for i in range(8):
         dY = Y[i] - Y_et
         number = i
 
-
 Y2 = a0 + a1 * X[number, 0] + a2 * X[number, 1] + a3 * X[number, 2]
+
+stop_time = time.time()
 
 print("X:\n", X)
 print("Y:\n", Y)
@@ -44,3 +47,4 @@ print("X0: \n", X0)
 print("T_et = ", Y_et)
 print("XNormalized: \n", XNormal.round(4))
 print("number = ", number)
+print("time = ", (stop_time - start_time))
